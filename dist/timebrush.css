@@ -1,0 +1,37 @@
+
+.timebrush {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  max-height: 80vh;
+  overflow: auto;
+  border: 1px solid #ccc;
+}
+.cell, .header, .time-col {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+}
+.time-col {
+  background-color: #f8f8f8;
+  position: sticky;
+  left: 0;
+}
+.header {
+  background: #f0f0f0;
+  position: sticky;
+  top: 0;
+  font-weight: bold;
+}
+.cell.selected {
+  background-color: #4dd0e1;
+}
+.cell.temp-selected {
+  background-color: #b2ebf2 !important;
+}
+body[data-mode="erase"] .cell:hover {
+  background-color: #ffcdd2 !important;
+}
+.cell:hover {
+  cursor: pointer;
+}

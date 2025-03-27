@@ -1,0 +1,34 @@
+name: Auto Minify JS
+
+on:
+  push:
+    paths:
+      - 'src/timebrush.js'
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install Terser (JS minifier)
+        run: npm install terser -g
+
+      - name: ✂️ Minify timebrush.js
+        run: terser src/timebrush.js -c -m -o dist/timebrush.min.js
+
+      - name: ✅ Commit minified file
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add dist/timebrush.min.js
+          git commit -m "🤖 Auto-minify timebrush.js"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

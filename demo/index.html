@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TimeBrush.js Demo</title>
+  <link rel="stylesheet" href="../dist/timebrush.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .container {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📅 TimeBrush.js Demo</h1>
+
+  <div class="container">
+    <div id="timebrush1"></div>
+  </div>
+
+  <div class="container">
+    <div id="timebrush2"></div>
+  </div>
+
+  <script src="../dist/timebrush.min.js"></script>
+  <script>
+    TimeBrush.init({
+      selector: "#timebrush1",
+      fetchUrl: "https://example.com/api/timebrush1",
+      saveUrl: "https://example.com/api/timebrush1/save",
+      locale: "en-US",
+      timeFormat: "HH:mm",
+      labels: {
+        draw: "Draw",
+        erase: "Erase",
+        save: "Save"
+      }
+    });
+
+    TimeBrush.init({
+      selector: "#timebrush2",
+      fetchUrl: "https://example.com/api/timebrush2",
+      saveUrl: "https://example.com/api/timebrush2/save",
+      locale: "uz-UZ",
+      timeFormat: "HH:mm",
+      labels: {
+        draw: "Chizish",
+        erase: "O‘chirish",
+        save: "Saqlash"
+      }
+    });
+  </script>
+
+</body>
+</html>
