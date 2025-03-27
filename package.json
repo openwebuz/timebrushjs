@@ -1,6 +1,6 @@
 {
   "name": "timebrush",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "🖌️ Excel-style timetable grid with draw and erase support",
   "main": "dist/timebrush.min.js",
   "scripts": {
