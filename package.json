@@ -1,0 +1,12 @@
+{
+  "name": "timebrush",
+  "version": "1.0.0",
+  "description": "🖌️ Excel-style timetable grid with draw and erase support",
+  "main": "dist/timebrush.min.js",
+  "scripts": {
+    "build": "terser src/timebrush.js -c -m -o dist/timebrush.min.js"
+  },
+  "keywords": ["timetable", "timetable", "schedule", "calendar", "drag", "time", "draw", "erase"],
+  "author": "OPEN WEB",
+  "license": "MIT"
+}

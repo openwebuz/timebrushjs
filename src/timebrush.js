@@ -1,28 +1,32 @@
 // timebrush.js — Full source version
 
 window.TimeBrush = (function () {
-    function TimeBrush(config) {
-      this.container = document.querySelector(config.selector);
-      if (!this.container) return;
-  
-      this.fetchUrl = config.fetchUrl;
-      this.saveUrl = config.saveUrl;
-      this.days = config.days || ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-      this.timeStep = config.timeStep || 10;
-      this.locale = config.locale || 'en-US';
-      this.timeFormat = config.timeFormat || 'HH:mm';
-      this.labels = config.labels || {
-        draw: "✍️ Draw",
-        erase: "❌ Erase",
-        save: "💾 Save"
-      };
-  
-      this.mode = 'draw';
-      this.selectedCells = new Set();
-      this.gridElement = null;
-  
-      this.init();
-    }
+  function TimeBrush(config) {
+    this.container = document.querySelector(config.selector);
+    if (!this.container) return;
+
+    const fullWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const firstDay = config.firstDay || "Sunday";
+    const startIndex = fullWeek.indexOf(firstDay);
+    this.days = config.days || [...fullWeek.slice(startIndex), ...fullWeek.slice(0, startIndex)];
+
+    this.fetchUrl = config.fetchUrl;
+    this.saveUrl = config.saveUrl;
+    this.timeStep = config.timeStep || 10;
+    this.locale = config.locale || 'en-US';
+    this.timeFormat = config.timeFormat || 'HH:mm';
+    this.labels = config.labels || {
+      draw: "✍️ Draw",
+      erase: "❌ Erase",
+      save: "💾 Save"
+    };
+
+    this.mode = 'draw';
+    this.selectedCells = new Set();
+    this.gridElement = null;
+
+    this.init();
+  }
   
     TimeBrush.prototype.init = function () {
       this.createToolbar();
