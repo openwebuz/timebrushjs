@@ -63,6 +63,8 @@ Timetable.init({
 | `locale`     | Format locale (e.g. `'en-US'`)        |
 | `timeFormat` | `'HH:mm'` or `'hh:mm a'`              |
 | `labels`     | `{ draw, erase, save }`               |
+| `firstDay`   | Optional. Start week on a specific day (e.g., `"Monday"`) |
+
 
 ---
 
